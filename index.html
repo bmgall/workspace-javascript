@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main-old.css">
     <!-- Jquery library   ---->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -425,10 +425,12 @@
             <a href="quiz1.html">Do your practice in quiz1.html</a>
         </div>
 
-        <div class="practice">
+        <div class="practice">if (index >= imglist.length()) {
+            index = 0;
+        }
             <h1>Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img src="img/die1.png" id="dice"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -449,7 +451,20 @@
                     <td id="r6"></td>
                 </tr>
             </table>
-
+            <script>
+                var stats = [0,0,0,0,0,0];
+                function changeimage(){
+                    var num = Math.floor(Math.random()*6+1);
+                    stats[num-1]++;
+                    console.log(stats);
+                    document.getElementById('dice').setAttribute('src', "img/die"+num+".png");
+                    for(var i in stats) {
+                        console.log(stats[i]);
+                    }
+                    document.getElementById('r1').textcontent=stats[0].toString();
+                }
+                document.getElementById('roll').addEventListener('click', changeimage, false);
+            </script>
         </div>
 
 
@@ -471,7 +486,26 @@
                 <img src="img/usca5.jpg" alt="usca">
             </div>
 			<script>
-				
+				//Automatic Interval
+                setInterval(changepic, 5000);
+
+                var index = 0;
+                //static list of all img elements
+                var imglist = document.querySelectorAll(".img-container-hide");
+                //imglist[0].setAttribute('class', "img-container");
+
+                function changepic() {
+                    imglist[index].setAttribute("class", "img-container-hide");
+                    index++;
+
+                    imglist[index].setAttribute("class", "img-container");
+                    
+                    if (index >= imglist.length) {
+                        index = 0;
+                    }
+
+                }
+
 			</script>
 
 
@@ -524,9 +558,10 @@
 
 
     </div>
+    <!-- 
     <script src="script.js"> </script>
     <script src="js/practice.js"></script>
-
+    -->
 
 </body>
 
