@@ -7,7 +7,36 @@
     <!-- Jquery library   ---->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script> 
+    $(document).ready(function(){
+        $('body').hide().fadeIn(3000);
 
+        $('h1').mouseover(function(){
+            $(this).slideUp();
+        });
+
+        $('h1').mouseout(function(){
+            $(this).slideDown();
+        });
+
+        //try one yourself
+
+        $('p').hover(function(){
+            console.log("hovered");
+        });
+
+        $('h1').click(function(){
+            $(this).parent().next().children('p').slideToggle();
+        });
+
+        $('img').each(function(){
+            var theID = $(this).attr('src');
+            console.log(theID);
+        });
+        
+    });
+    
+    </script>
 
 </head>
 
@@ -485,7 +514,8 @@
             <div class="img-container-hide">
                 <img src="img/usca5.jpg" alt="usca">
             </div>
-			<script>
+			<!-- <script>
+               
 				//Automatic Interval
                 setInterval(changepic, 5000);
 
@@ -503,11 +533,11 @@
                     if (index >= imglist.length) {
                         index = 0;
                     }
-
+                    
                 }
 
 			</script>
-
+             -->
 
         </div>
 
