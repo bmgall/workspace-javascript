@@ -1,4 +1,4 @@
-var text = {
+var test = {
     hotelname: "marriot",
     room: 350,
     booked: 120,
@@ -8,6 +8,16 @@ var text = {
 
 };
 
-console.log(text.room);
-console.log(text.hotelname);
-console.log(text.display());
+console.log(test.hotelname);
+console.log(test.room);
+
+$(function(){
+    $('#submit').click(reservation);
+});
+
+function reservation(){
+    var guest = {
+        name: $('name').val(),
+        numberofGuests: $('#num').val()
+    };
+}
